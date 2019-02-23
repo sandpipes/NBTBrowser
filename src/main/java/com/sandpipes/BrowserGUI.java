@@ -104,7 +104,7 @@ public class BrowserGUI extends Application {
         Menu menuHelp = new Menu("Help");
 
         MenuBar menuBar = new MenuBar();
-        menuBar.useSystemMenuBarProperty().set(true);
+        //menuBar.useSystemMenuBarProperty().set(true);
         
         menuBar.getMenus().addAll(menuFile, menuHelp);
         
