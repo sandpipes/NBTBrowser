@@ -14,6 +14,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.image.*;
@@ -34,12 +35,15 @@ public class BrowserGUI extends Application {
         stage.getIcons().add(new Image(NBTBrowser.class.getResourceAsStream("/icons/stick.png"), 15, 15, false, false));
         stage.setTitle("NBTBrowser");        
         
-        MenuBar menuBar = createMenuBar();
         BorderPane root = new BorderPane();
         
         TreeCreator.setDefaultTree(tree);
         
-        root.setTop(menuBar);
+        GridPane gp = new GridPane();
+        gp.add(createMenuBar(), 0, 0);
+        gp.add(createActionBar(), 0, 1);
+        
+        root.setTop(gp);
         root.setCenter(tree);
         
         Scene scene = new Scene(root, 400, 450);
@@ -80,6 +84,21 @@ public class BrowserGUI extends Application {
         });        
     }
 
+    public MenuBar createActionBar() {
+        Menu menuFile = new Menu("Edit", Icon.editIcon);  
+        menuFile.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                
+            }
+        });
+        
+        MenuBar menuBar = new MenuBar();
+        
+        menuBar.getMenus().addAll(menuFile);
+        
+        return menuBar;
+    }
+    
     public MenuBar createMenuBar() {
         Menu menuFile = new Menu("File");
         MenuItem open = new MenuItem("Open");
