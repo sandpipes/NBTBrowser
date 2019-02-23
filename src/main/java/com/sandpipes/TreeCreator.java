@@ -90,15 +90,15 @@ public class TreeCreator {
             if(t.getType() == TagType.END) break;
             
             switch(tag.listType) {
-                case LIST:
+                case TagType.LIST:
                     addListTree(root, (ListTag) t); 
                     break;
-                case COMPOUND:
+                case TagType.COMPOUND:
                     addCompoundTree(root, (CompoundTag) t);
                     break;
-                case LONG_ARRAY:
-                case INT_ARRAY:
-                case BYTE_ARRAY:
+                case TagType.LONG_ARRAY:
+                case TagType.INT_ARRAY:
+                case TagType.BYTE_ARRAY:
                     addArrayTree(root, (ArrayTag) t);
                     break;
                 default:
@@ -130,15 +130,15 @@ public class TreeCreator {
             if(child.getType() == TagType.END) break;
             
             switch(child.getType()) {
-                case LIST:
+                case TagType.LIST:
                     addListTree(root, (ListTag) child); 
                     break;
-                case COMPOUND:
+                case TagType.COMPOUND:
                     addCompoundTree(root, (CompoundTag) child);
                     break;
-                case LONG_ARRAY:
-                case INT_ARRAY:
-                case BYTE_ARRAY:
+                case TagType.LONG_ARRAY:
+                case TagType.INT_ARRAY:
+                case TagType.BYTE_ARRAY:
                     addArrayTree(root, (ArrayTag) child);
                     break;
                 default:

@@ -48,7 +48,7 @@ public class ByteArrayTag extends ArrayTag {
     }
 
     @Override
-    public TagType getType() {
+    public byte getType() {
         return TagType.BYTE_ARRAY;
     }
 

@@ -48,7 +48,7 @@ public class IntArrayTag extends ArrayTag {
     }
 
     @Override
-    public TagType getType() {
+    public byte getType() {
         return TagType.INT_ARRAY;
     }
 

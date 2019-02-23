@@ -34,7 +34,7 @@ public class CompoundTag extends Tag {
         for (Tag tag : data.values()) {
             Tag.writeTag(tag, d);
         }
-        d.writeByte(TagType.getType(TagType.END));
+        d.writeByte(TagType.END);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class CompoundTag extends Tag {
     }
 
     @Override
-    public TagType getType() {
+    public byte getType() {
         return TagType.COMPOUND;
     }
 

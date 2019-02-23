@@ -15,7 +15,7 @@ import javafx.scene.image.ImageView;
 public class ListTag<T extends Tag> extends Tag {
 
     public List<T> data = new ArrayList<T>();
-    public TagType listType;
+    public byte listType;
     private final Node icon = new ImageView(new Image(NBTBrowser.class.getResourceAsStream("/icons/edit-list-24.png"), 15, 15, false, false));
 
     public ListTag() {
@@ -31,7 +31,7 @@ public class ListTag<T extends Tag> extends Tag {
         if (data.size() > 0) listType = data.get(0).getType();
         else listType = TagType.BYTE;
 
-        d.writeByte(TagType.getType(listType));
+        d.writeByte(listType);
         d.writeInt(data.size());
         for (int i = 0; i < data.size(); i++)
             data.get(i).write(d);
@@ -40,7 +40,7 @@ public class ListTag<T extends Tag> extends Tag {
     @SuppressWarnings("unchecked")
     @Override
     public void read(DataInput d) throws IOException {
-        listType = TagType.getType(d.readByte());
+        listType = d.readByte();
         int size = d.readInt();
 
         data = new ArrayList<T>();
@@ -52,7 +52,7 @@ public class ListTag<T extends Tag> extends Tag {
     }
 
     @Override
-    public TagType getType() {
+    public byte getType() {
         return TagType.LIST;
     }
 

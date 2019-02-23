@@ -39,7 +39,7 @@ public class StringTag extends Tag {
     }
 
     @Override
-    public TagType getType() {
+    public byte getType() {
         return TagType.STRING;
     }
 

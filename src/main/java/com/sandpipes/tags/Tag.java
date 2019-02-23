@@ -20,7 +20,7 @@ public abstract class Tag {
     
     public abstract void write(DataOutput d) throws IOException;
     public abstract void read(DataInput d) throws IOException;
-    public abstract TagType getType();
+    public abstract byte getType();
     public abstract Node getIcon();
     public abstract Object getRaw();
     
@@ -41,7 +41,7 @@ public abstract class Tag {
     }
     
     public static void writeTag(Tag tag, DataOutput d) throws IOException {
-        d.writeByte(TagType.getType(tag.getType()));
+        d.writeByte(tag.getType());
         if(tag.getType() == TagType.END) return;
         d.writeUTF(tag.getName());
         tag.write(d);
@@ -55,39 +55,35 @@ public abstract class Tag {
     
     @SuppressWarnings("rawtypes")
     public static Tag createTag(byte type, String name) {
-        switch(TagType.getType(type)) {
-            case END:
+        switch(type) {
+            case TagType.END:
                 return new EndTag(name);
-            case BYTE:
+            case TagType.BYTE:
                 return new ByteTag(name);
-            case BYTE_ARRAY:
+            case TagType.BYTE_ARRAY:
                 return new ByteArrayTag(name);
-            case COMPOUND:
+            case TagType.COMPOUND:
                 return new CompoundTag(name);
-            case DOUBLE:
+            case TagType.DOUBLE:
                 return new DoubleTag(name);
-            case FLOAT:
+            case TagType.FLOAT:
                 return new FloatTag(name);
-            case INT:
+            case TagType.INT:
                 return new IntTag(name);
-            case INT_ARRAY:
+            case TagType.INT_ARRAY:
                 return new IntArrayTag(name);
-            case LIST:
+            case TagType.LIST:
                 return new ListTag(name);
-            case LONG:
+            case TagType.LONG:
                 return new LongTag(name);
-            case LONG_ARRAY:
+            case TagType.LONG_ARRAY:
                 return new LongArrayTag(name);
-            case SHORT:
+            case TagType.SHORT:
                 return new ShortTag(name);
-            case STRING:
+            case TagType.STRING:
                 return new StringTag(name);
             default:
                 return null;
         }
-    }
-    
-    public static Tag createTag(TagType type, String name) {
-        return createTag(TagType.getType(type), name);
     }
 }

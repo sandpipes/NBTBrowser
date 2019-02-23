@@ -49,7 +49,7 @@ public class LongArrayTag extends ArrayTag {
     }
 
     @Override
-    public TagType getType() {
+    public byte getType() {
         return TagType.LONG_ARRAY;
     }
 

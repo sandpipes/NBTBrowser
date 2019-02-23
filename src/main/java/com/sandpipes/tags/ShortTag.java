@@ -39,7 +39,7 @@ public class ShortTag extends Tag {
     }
 
     @Override
-    public TagType getType() {
+    public byte getType() {
         return TagType.SHORT;
     }
 

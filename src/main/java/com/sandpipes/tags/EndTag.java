@@ -27,7 +27,7 @@ public class EndTag extends Tag {
     }
 
     @Override
-    public TagType getType() {
+    public byte getType() {
         return TagType.END;
     }
 
