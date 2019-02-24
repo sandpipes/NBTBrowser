@@ -71,7 +71,7 @@ public class BrowserGUI extends Application {
                 boolean success = false;
                 if (db.hasFiles()) {
                     File file = db.getFiles().get(0);
-                    CompoundTag ctag = NBTFile.readFile(file.getAbsolutePath());
+                    CompoundTag ctag = NBTFile.readNBTFile(file);
                     if(ctag == null) return;
                    
                     TreeCreator.setUpTree(file.getName(), tree, ctag);
@@ -108,7 +108,7 @@ public class BrowserGUI extends Application {
                 fileChooser.setTitle("Open NBT File");
                 File file = fileChooser.showOpenDialog(stage);
                 if (file != null) {
-                    CompoundTag ctag = NBTFile.readFile(file.getAbsolutePath());
+                    CompoundTag ctag = NBTFile.readNBTFile(file);
                     if(ctag == null) return;
                     
                     TreeCreator.setUpTree(file.getName(), tree, ctag);

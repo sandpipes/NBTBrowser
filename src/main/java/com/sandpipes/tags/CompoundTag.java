@@ -29,6 +29,10 @@ public class CompoundTag extends Tag {
         data = map;
     }
     
+    public void setInt(String name, int i) {
+        data.put(name, new IntTag(name, i));
+    }
+    
     @Override
     public void write(DataOutput d) throws IOException {
         for (Tag tag : data.values()) {
