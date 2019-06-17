@@ -1,4 +1,4 @@
-package com.sandpipes;
+package dev.calibur.nbtbrowser;
 
 public class NBTBrowser {
     public static void main(String[] args) {

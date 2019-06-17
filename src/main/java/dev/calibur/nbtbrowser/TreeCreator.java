@@ -1,16 +1,15 @@
-package com.sandpipes;
+package dev.calibur.nbtbrowser;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.sandpipes.tags.ArrayTag;
-import com.sandpipes.tags.CompoundTag;
-import com.sandpipes.tags.ListTag;
-import com.sandpipes.tags.Tag;
-import com.sandpipes.tags.TagType;
-
+import dev.calibur.nbtbrowser.tags.ArrayTag;
+import dev.calibur.nbtbrowser.tags.CompoundTag;
+import dev.calibur.nbtbrowser.tags.ListTag;
+import dev.calibur.nbtbrowser.tags.Tag;
+import dev.calibur.nbtbrowser.tags.TagType;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 

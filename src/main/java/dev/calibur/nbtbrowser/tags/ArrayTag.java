@@ -1,4 +1,4 @@
-package com.sandpipes.tags;
+package dev.calibur.nbtbrowser.tags;
 
 import javafx.scene.Node;
 

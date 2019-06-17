@@ -1,46 +1,53 @@
-package com.sandpipes.tags;
+package dev.calibur.nbtbrowser.tags;
 
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-import com.sandpipes.NBTBrowser;
-
+import dev.calibur.nbtbrowser.NBTBrowser;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class StringTag extends Tag {
+public class ByteTag extends Tag {
     
-    public String data;
-    private final Node icon = new ImageView(new Image(NBTBrowser.class.getResourceAsStream("/icons/edit-small-caps-24.png"), 15, 15, false, false));
-
-    public StringTag() {
+    private final Node icon = new ImageView(new Image(NBTBrowser.class.getResourceAsStream("/icons/document-b-24.png"), 15, 15, false, false));
+    private byte data;
+    
+    public ByteTag() {
         super();
     }
     
-    public StringTag(String name) {
+    public ByteTag(String name) {
         super(name);
     }
-
-    public StringTag(String name, String i) {
+    
+    public ByteTag(String name, byte val) {
         super(name);
-        data = i;
+        this.data = val;
+    }
+    
+    public byte get() {
+        return data;
+    }
+
+    public void set(byte b) {
+        data = b;      
     }
     
     @Override
     public void write(DataOutput d) throws IOException {
-        d.writeUTF(data);
+        d.writeByte(data);
     }
 
     @Override
     public void read(DataInput d) throws IOException {
-        data = d.readUTF();
+        data = d.readByte();
     }
 
     @Override
     public byte getType() {
-        return TagType.STRING;
+        return TagType.BYTE;
     }
 
     @Override
@@ -52,5 +59,6 @@ public class StringTag extends Tag {
     public Object getRaw() {
         return data;
     }
+
 
 }

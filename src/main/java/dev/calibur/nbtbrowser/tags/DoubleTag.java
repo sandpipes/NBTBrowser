@@ -1,46 +1,45 @@
-package com.sandpipes.tags;
+ package dev.calibur.nbtbrowser.tags;
 
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-import com.sandpipes.NBTBrowser;
-
+import dev.calibur.nbtbrowser.NBTBrowser;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class ShortTag extends Tag {
-    
-    public short data;
-    private final Node icon = new ImageView(new Image(NBTBrowser.class.getResourceAsStream("/icons/document-s-24.png"), 15, 15, false, false));
+public class DoubleTag extends Tag {
 
-    public ShortTag() {
+    private final Node icon = new ImageView(new Image(NBTBrowser.class.getResourceAsStream("/icons/document-d-24.png"), 15, 15, false, false));
+    public double data;
+    
+    public DoubleTag() {
         super();
     }
     
-    public ShortTag(String name) {
+    public DoubleTag(String name) {
         super(name);
     }
     
-    public ShortTag(String name, short i) {
+    public DoubleTag(String name, double d) {
         super(name);
-        data = i;
+        data = d;
     }
     
     @Override
     public void write(DataOutput d) throws IOException {
-        d.writeShort(data);
+        d.writeDouble(data);
     }
 
     @Override
     public void read(DataInput d) throws IOException {
-        data = d.readShort();
+        data = d.readDouble();
     }
 
     @Override
     public byte getType() {
-        return TagType.SHORT;
+        return TagType.DOUBLE;
     }
 
     @Override

@@ -1,46 +1,45 @@
-package com.sandpipes.tags;
+package dev.calibur.nbtbrowser.tags;
 
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-import com.sandpipes.NBTBrowser;
-
+import dev.calibur.nbtbrowser.NBTBrowser;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class IntTag extends Tag {
-    
-    public int data;
-    private final Node icon = new ImageView(new Image(NBTBrowser.class.getResourceAsStream("/icons/document-i-24.png"), 15, 15, false, false));
+public class LongTag extends Tag {
 
-    public IntTag() {
+    public long data;
+    private final Node icon = new ImageView(new Image(NBTBrowser.class.getResourceAsStream("/icons/document-l-24.png"), 15, 15, false, false));
+
+    public LongTag() {
         super();
     }
     
-    public IntTag(String name) {
+    public LongTag(String name) {
         super(name);
     }
     
-    public IntTag(String name, int i) {
+    public LongTag(String name, long i) {
         super(name);
         data = i;
     }
     
     @Override
     public void write(DataOutput d) throws IOException {
-        d.writeInt(data);
+        d.writeLong(data);
     }
 
     @Override
     public void read(DataInput d) throws IOException {
-        data = d.readInt();
+        data = d.readLong();
     }
 
     @Override
     public byte getType() {
-        return TagType.INT;
+        return TagType.LONG;
     }
 
     @Override

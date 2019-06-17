@@ -1,4 +1,4 @@
-package com.sandpipes.tags;
+package dev.calibur.nbtbrowser.tags;
 
 import java.io.DataInput;
 import java.io.DataOutput;
@@ -6,8 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sandpipes.NBTBrowser;
-
+import dev.calibur.nbtbrowser.NBTBrowser;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

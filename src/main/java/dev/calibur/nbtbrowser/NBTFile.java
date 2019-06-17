@@ -1,4 +1,4 @@
-package com.sandpipes;
+package dev.calibur.nbtbrowser;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -11,8 +11,8 @@ import java.io.OutputStream;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
-import com.sandpipes.tags.CompoundTag;
-import com.sandpipes.tags.Tag;
+import dev.calibur.nbtbrowser.tags.CompoundTag;
+import dev.calibur.nbtbrowser.tags.Tag;
 
 public class NBTFile {
     
@@ -24,7 +24,7 @@ public class NBTFile {
                 ){
             
             outtag = (CompoundTag)Tag.readTag(dis);       
-            
+            System.out.println(outtag.getName());
             return outtag;
         } catch (IOException e) {
             Helper.showInfo("Unable to read NBT file.");
@@ -37,23 +37,23 @@ public class NBTFile {
         return readNBTFile(new File(path));
     }
     
-    public static int writeNBTFile(CompoundTag tag, File file) {
+    public static boolean writeNBTFile(CompoundTag tag, File file) {
         try (OutputStream input = new FileOutputStream(file);
                 GZIPOutputStream gz = new GZIPOutputStream(input);
                 DataOutputStream dis = new DataOutputStream(gz);
                 ){
-            
+            assert tag.getName() == "" : "??";
             Tag.writeTag(tag, dis); 
             
-            return 0;
+            return true;
         } catch (IOException e) {
             Helper.showInfo("Unable to write NBT file.");
         }
         
-        return -1;
+        return false;
     }
     
-    public static int writeNBTFile(CompoundTag tag, String path) {
+    public static boolean writeNBTFile(CompoundTag tag, String path) {
         return writeNBTFile(tag, new File(path));
     }
 }

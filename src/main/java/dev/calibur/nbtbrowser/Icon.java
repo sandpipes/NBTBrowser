@@ -1,4 +1,4 @@
-package com.sandpipes;
+package dev.calibur.nbtbrowser;
 
 import javafx.scene.Node;
 import javafx.scene.image.Image;

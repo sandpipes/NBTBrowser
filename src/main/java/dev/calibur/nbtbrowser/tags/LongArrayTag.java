@@ -1,31 +1,31 @@
-package com.sandpipes.tags;
+package dev.calibur.nbtbrowser.tags;
 
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.sandpipes.NBTBrowser;
-
+import dev.calibur.nbtbrowser.NBTBrowser;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class ByteArrayTag extends ArrayTag {
+public class LongArrayTag extends ArrayTag {
     
-    private final Node cIcon = new ImageView(new Image(NBTBrowser.class.getResourceAsStream("/icons/document-b-24.png"), 15, 15, false, false));
-    private final Node icon = new ImageView(new Image(NBTBrowser.class.getResourceAsStream("/icons/edit-code-24.png"), 15, 15, false, false));
-    public ArrayList<Byte> data;
-    
-    public ByteArrayTag() {
+    public ArrayList<Long> data;
+    //TODO Add long array icon
+    private final Node icon = new ImageView(new Image(NBTBrowser.class.getResourceAsStream("/icons/edit-code-i-24.png"), 15, 15, false, false));
+    private final Node cIcon = new ImageView(new Image(NBTBrowser.class.getResourceAsStream("/icons/document-l-24.png"), 15, 15, false, false));
+
+    public LongArrayTag() {
         super();
     }
     
-    public ByteArrayTag(String name) {
+    public LongArrayTag(String name) {
         super(name);
     }
-    
-    public ByteArrayTag(String name, ArrayList<Byte> array) {
+
+    public LongArrayTag(String name, ArrayList<Long> array) {
         super(name);
         data = array;
     }
@@ -34,29 +34,29 @@ public class ByteArrayTag extends ArrayTag {
     public void write(DataOutput d) throws IOException {
         d.writeInt(data.size());
         for (int i = 0; i < data.size(); i++) {
-            d.writeByte(data.get(i));
+            d.writeLong(data.get(i));
         }
     }
 
     @Override
     public void read(DataInput d) throws IOException {
-        data = new ArrayList<Byte>();
+        data = new ArrayList<Long>();
         int len = d.readInt();
         for(int i = 0; i<len; i++) {
-            data.add(d.readByte());
+            data.add(d.readLong());
         }
     }
 
     @Override
     public byte getType() {
-        return TagType.BYTE_ARRAY;
+        return TagType.LONG_ARRAY;
     }
 
     @Override
     public Node getIcon() {
         return icon;
     }
-
+    
     @Override
     public Object getRaw() {
         return data;

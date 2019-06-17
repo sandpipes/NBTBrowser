@@ -1,9 +1,8 @@
-package com.sandpipes;
+package dev.calibur.nbtbrowser;
 
 import java.io.File;
 
-import com.sandpipes.tags.CompoundTag;
-
+import dev.calibur.nbtbrowser.tags.CompoundTag;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -118,7 +117,24 @@ public class BrowserGUI extends Application {
             }
         });        
      
-        menuFile.getItems().addAll(open);
+        MenuItem save = new MenuItem("Save");
+        save.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Save NBT File");
+                File file = fileChooser.showSaveDialog(stage);
+                if (file != null) {
+                    //NBTFile.writeNBTFile(c, file);
+                    
+                    //TreeCreator.setUpTree(file.getName(), tree, ctag);
+                }
+                
+                event.consume();
+            }
+        });    
+        
+        
+        menuFile.getItems().addAll(open, save);
         
         Menu menuHelp = new Menu("Help");
 

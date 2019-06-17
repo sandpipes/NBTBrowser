@@ -1,4 +1,4 @@
-package com.sandpipes;
+package dev.calibur.nbtbrowser;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;

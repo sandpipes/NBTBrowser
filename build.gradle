@@ -5,20 +5,20 @@ apply plugin: 'application'
 
 sourceCompatibility = 1.8
 
-mainClassName = 'com.sandpipes.NBTBrowser'
+mainClassName = 'dev.calibur.nbtbrowser.NBTBrowser'
 
 jar {
     baseName = 'NBTBrowser'
     version =  '1.0'
     manifest {
-        attributes 'Main-Class': 'com.sandpipes.NBTBrowser'
+        attributes 'Main-Class': 'dev.calibur.nbtbrowser.NBTBrowser'
     }
 }
 
 sourceSets {
     main {
         java {
-            srcDir 'com'
+            srcDir 'dev'
         }
         resources {
             srcDir 'icons'
