@@ -42,9 +42,10 @@ public abstract class Tag {
     
     public static void writeTag(Tag tag, DataOutput d) throws IOException {
         d.writeByte(tag.getType());
-        if(tag.getType() == TagType.END) return;
-        d.writeUTF(tag.getName());
-        tag.write(d);
+        if(tag.getType() != TagType.END) {
+            d.writeUTF(tag.getName());
+            tag.write(d);
+        }
     }
     
     public boolean isArray() {
